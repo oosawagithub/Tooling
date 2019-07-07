@@ -1,0 +1,20 @@
+<div class="conteiner">
+	<div class="new-post-wrapper">
+		<div class="row">
+			<%= form_for(@post) do |post| %>
+				<%= post.attachment_field :post_image %>
+				<h4>名前</h4>
+				<%= post.text_field :name %>
+				<h4>タイトル</h4>
+				<%= post.text_field :title %>
+				<h4>本文</h4>
+				<%= post.text_area :body %>
+				<h4>カテゴリー</h4>
+				<%= post.collection_select :category_id, Category.all,:id, :name %>
+				<h4>都道府県</h4>
+				<%= post.select :location, Post.locations.keys, {prompt: '都道府県を選択'}, class: 'form-control btn btn-info' %>
+				<%= post.submit '新規投稿' %>
+			<% end %>
+		</div>
+	</div>
+</div>
