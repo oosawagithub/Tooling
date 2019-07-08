@@ -25,6 +25,7 @@
 
 .container{
 	background-color: #f5f5f5;
+	width: 100%;
 }
 
 /*--Topページ画像--*/
@@ -36,6 +37,42 @@
 
 .top-wrapper{
 	margin: 0 auto;
+}
+
+/*ページネーション*/
+.pager li > a, .pager li > span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 0 5px;
+    color: #fff;
+}
+
+.active > span:focus {
+    z-index: 3;
+    color: #fff;
+    background-color: #a9a9a9;
+    border-color: #a9a9a9;
+    cursor: default;
+    color: #fff;
+   }
+
+   /* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+   color: #fff;
+    background-color: #000;
+    border-color: #000;
+    cursor: default;
+}
+
+.pagination>.active>a:hover {
+   color: #fff;
+    background-color: #a9a9a9;
+    border-color: #a9a9a9;
+    cursor: default;
+    color: #fff;
 }
 /*--メイン記事--*/
 
@@ -83,9 +120,9 @@ a {
 }
 
 .post-title{
-	display: inline-block;
+	/*display: inline-block;*/
 	font-weight: bold;
-	line-height: 40px;
+	/*line-height: 40px;*/
 	letter-spacing: 0.020em;
 	overflow: hidden;
 }

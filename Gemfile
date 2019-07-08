@@ -69,4 +69,3 @@ gem 'bootstrap-sass','~>3.3.6'
 gem "impressionist"
 gem "jquery-turbolinks"
 gem "jquery-rails"
-gem 'kaminari-bootstrap'
