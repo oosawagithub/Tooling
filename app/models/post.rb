@@ -5,7 +5,9 @@ class Post < ApplicationRecord
 	# 親に対し、optional: trueが必要
 	belongs_to :category, optional: true
 
-	attachment :post_image
+	#attachment :post_image
+    has_many :post_images, dependent: :destroy
+    accepts_attachments_for :post_images, attachment: :image
 
 	enum location: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
