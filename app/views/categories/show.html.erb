@@ -12,7 +12,7 @@
 						<article class="main-box clearfix">
 							<div class="post-image">
 								<%= link_to post_path(category) do %>
-								<%= attachment_image_tag category, :post_image, :fill, 200,120,format:"jpeg",fallback:"no_image.jpg",size:"200x120" %>
+								<%= attachment_image_tag category.post_images.first, :image, :fill, 200,120,format:"jpeg",fallback:"no_image.jpg",size:"200x120" %>
 								<% end %>
 							</div>
 							<div class="post-location">
@@ -83,15 +83,15 @@
 						const select = category.selectedIndex;
 						const value = category.options[select].value;
 						if(value == "1"){
-							location.href = "http://localhost:3000/categories/1";
+							location.href = "../categories/1";
 						}else if(value == "2"){
-							location.href = "http://localhost:3000/categories/2";
+							location.href = "../categories/2";
 						}else if(value == "3"){
-							location.href = "http://localhost:3000/categories/3";
+							location.href = "../categories/3";
 						}else if(value == "4"){
-							location.href = "http://localhost:3000/categories/4";
+							location.href = "../categories/4";
 						}else if(value == "5"){
-							location.href = "http://localhost:3000/categories/5";
+							location.href = "../categories/5";
 						}
 					};
 				});

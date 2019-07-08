@@ -2,7 +2,7 @@
 	<div class="new-post-wrapper">
 		<main class="postnew">
 			<%= form_for(@post) do |post| %>
-				<%= post.attachment_field :post_image %>
+				<%= post.attachment_field :post_images_images, multiple: true %>
 				<h4>名前</h4>
 				<%= post.text_field :name %>
 				<h4>タイトル</h4>
