@@ -1,6 +1,6 @@
 <div class="conteiner">
 	<div class="new-post-wrapper">
-		<div class="row">
+		<main class="postnew">
 			<%= form_for(@post) do |post| %>
 				<%= post.attachment_field :post_image %>
 				<h4>名前</h4>
@@ -12,9 +12,9 @@
 				<h4>カテゴリー</h4>
 				<%= post.collection_select :category_id, Category.all,:id, :name %>
 				<h4>都道府県</h4>
-				<%= post.select :location, Post.locations.keys, {prompt: '都道府県を選択'}, class: 'form-control btn btn-info' %>
-				<%= post.submit '新規投稿' %>
+				<%= post.select :location, Post.locations.keys, {prompt: '都道府県を選択'}, class: 'form-control' %>
+				<%= post.submit '新規投稿', class: " btn btn-info" %>
 			<% end %>
-		</div>
+		</main>
 	</div>
 </div>
