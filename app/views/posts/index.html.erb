@@ -14,7 +14,7 @@
 								<div class="post-image">
 									<!-- ここで画像が空じゃないかの判定 -->
 									<%if post.post_images.present? %>
-										<%= link_to post_path(post) do %>
+										<%= link_to post_path(post),data: {"turbolinks" => false} do %>
 										<!-- 空じゃなかったら post.post_images.first 要素の一番最初だけを表示。 .lastだったら最後の画像の表示-->
 										<!-- 3枚あったら .firstで1枚目 .lastで3枚目 -->
 										<%= attachment_image_tag post.post_images.first, :image, :fill, 200,120,format:"jpeg",fallback:"no_image.jpg",size:"200x120" %>
@@ -25,12 +25,12 @@
 									<h4><%= post.location %></h4>
 								</div>
 								<div class="main-title">
-									<%= link_to post_path(post) do %>
+									<%= link_to post_path(post),data: {"turbolinks" => false} do %>
 									<h3 class="post-title"><%= post.title %></h3>
 									<% end %>
 									<ul class="category-name">
 										<li class="post-date"><%= post.created_at.strftime('%Y/%m/%d %R') %></li>
-										<li class="post-category" style="margin-left: 7px;"><%= link_to post.category.name, category_path(post.category_id),class: 'category-link' %></li>
+										<li class="post-category" style="margin-left: 7px;"><%= link_to post.category.name, category_path(post.category_id),data: {"turbolinks" => false} ,class: 'category-link' %></li>
 										<!-- <li class="post-location" style="margin-left: 7px;"><%= post.location %></li> -->
 									</ul>
 								</div>
@@ -107,6 +107,12 @@
 		<div class="side-search">
 			<div class="side-title location">都道府県検索</div>
 			<div style="text-align: center;">
+				<%= search_form_for @search do |f| %>
+				    <div class="form-group">
+				    	<%= f.select :location_eq,[["北海道",1],["青森県",2],["岩手県",3],["宮城県",4],["秋田県",5],["山形県",6],["福島県",7],["茨城県",8],["栃木県",9],["群馬県",10],["埼玉県",11],["千葉県",12],["東京都",13],["神奈川県",14],["新潟県",15],["富山県",16],["石川県",17],["福井県",18],["山梨県",19],["長野県",20],["岐阜県",21],["静岡県",22],["愛知県",23],["三重県",24],["滋賀県",25],["京都府",26],["大阪府",27],["兵庫県",28],["奈良県",29],["和歌山県",30],["鳥取県",31],["島根県",32],["岡山県",33],["広島県",34],["山口県",35],["徳島県",36],["香川県",37],["愛媛県",38],["高知県",39],["福岡県",40],["佐賀県",41],["長崎県",42],["熊本県",43],["大分県",44],["宮崎県",45],["鹿児島県",46],["沖縄県",47]],{include_blank: "都道府県を選択"},{class: "location-select"} %>
+				    	<span><%= f.submit"検索",class: "location-submit btn" %></span>
+				    </div>
+				 <% end %>
 			</div>
 		</div>
 		</aside>
