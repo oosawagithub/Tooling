@@ -1,10 +1,19 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.page(params[:page]).per(10)
+    #@posts = Post.all.page(params[:page]).per(10)
+    # 検索オブジェクト
+    @search = Post.ransack(params[:q])
+    if params[:q]
+      # 検索結果
+      @posts = @search.result.page(params[:page]).per(10)
+    else
+      @posts = Post.all.page(params[:page]).per(10)
+    end
   end
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

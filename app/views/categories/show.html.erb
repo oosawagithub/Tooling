@@ -11,7 +11,7 @@
 					<% @category.post.each do |category| %>
 						<article class="main-box clearfix">
 							<div class="post-image">
-								<%= link_to post_path(category) do %>
+								<%= link_to post_path(category),data: {"turbolinks" => false} do %>
 								<%= attachment_image_tag category.post_images.first, :image, :fill, 200,120,format:"jpeg",fallback:"no_image.jpg",size:"200x120" %>
 								<% end %>
 							</div>
@@ -19,12 +19,12 @@
 								<h4><%= category.location %></h4>
 							</div>
 							<div class="main-title">
-								<%= link_to post_path(category) do %>
+								<%= link_to post_path(category),data: {"turbolinks" => false} do %>
 								<h3 class="post-title"><%= category.title %></h3>
 								<% end %>
 								<ul class="category-name">
 									<li class="post-date"><%= category.created_at.strftime('%Y/%m/%d %R') %></li>
-									<li class="post-category" style="margin-left: 7px;"><%= link_to category.category.name, category_path(category.category_id),class: 'category-link' %></li>
+									<li class="post-category" style="margin-left: 7px;"><%= link_to category.category.name, category_path(category.category_id),data: {"turbolinks" => false} ,class: 'category-link' %></li>
 									<!-- <li class="post-location" style="margin-left: 7px;"><%#= category.location %></li> -->
 								</ul>
 							</div>
