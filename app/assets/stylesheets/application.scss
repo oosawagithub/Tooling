@@ -23,7 +23,7 @@
 	/*display: block; を有効にするとヘッダに文字列が現れたので保留*/
 }
 
-.container{
+.content{
 	background-color: #f5f5f5;
 	width: 100%;
 }
@@ -53,31 +53,41 @@
 .active > span:focus {
     z-index: 3;
     color: #fff;
-    background-color: #a9a9a9;
-    border-color: #a9a9a9;
+    background-color: #d3d3d3;
+    border-color: #d3d3d3;
     cursor: default;
     color: #fff;
    }
 
+.pagination li > a:hover{
+	color: #fff;
+	background-color: #d3d3d3;
+}
+
    /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-   color: #fff;
-    background-color: #000;
+	color: #fff;
+	background-color: #000;
     border-color: #000;
     cursor: default;
 }
 
 .pagination>.active>a:hover {
-   color: #fff;
-    background-color: #a9a9a9;
+    color: #fff;
+    background-color: #000;
     border-color: #a9a9a9;
     cursor: default;
     color: #fff;
 }
 /*--メイン記事--*/
 
+/*リンクの下線を非表示*/
 a {
 	text-decoration:none;
+}
+/*カーソルを乗せたとき非表示*/
+a:hover{
+	text-decoration: none;
 }
 
 .clearfix:after{
@@ -102,8 +112,19 @@ a {
 .main-box{
 	padding: 8px;
 	background-color: #fff;
-	margin-top: 8px;
 	position: relative;
+	margin-bottom: 8px;
+}
+
+.list-title{
+	background-color: #000;
+	color: #fff;
+	margin-top: 8px;
+	font-size: 20px;
+	padding: 12px;
+	font-weight: bold;
+	letter-spacing: 0.025em;
+	margin-bottom: 8px;
 }
 
 .post-image{
@@ -117,6 +138,7 @@ a {
 
 .main-title{
 	margin-left: 220px;
+	padding-bottom: 30px;
 }
 
 .post-title{
@@ -130,7 +152,11 @@ a {
 .category-name{
 	list-style: none;
 	position: absolute;
-	bottom: 20px;
+	bottom: 10px;
+}
+
+.post-category :hover{
+	color: #fff;
 }
 
 .category-name li {
@@ -150,6 +176,12 @@ a {
 
 .post-category{
 	font-size: 13px;
+}
+
+.post-comment-count{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }
 
 /*サイド記事*/
@@ -197,11 +229,172 @@ a {
 
 .location-select{
 	margin-top: 20px;
-	width: 85%;
+	width: 80%;
 	height: 30px;
 }
 
 .location-submit{
 	background-color: #999;
 	color: #fff;
+}
+
+.ranking-box{
+	padding: 8px;
+	background-color: #fff;
+	margin-top: 8px;
+	position: relative;
+}
+
+.rank-image{
+	float: left;
+}
+
+.rank-title{
+	font-weight: bold;
+	letter-spacing: 0.020em;
+    overflow: hidden;
+    font-size: 14px;
+   /* padding-top: 6%;*/
+    margin-left: 170px;
+}
+
+/*投稿詳細ページ*/
+.show-box {
+    background-color: #fff;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.show-list-title{
+	background-color: #000;
+	color: #fff;
+	margin-top: 8px;
+	font-size: 20px;
+	padding: 12px;
+	font-weight: bold;
+	letter-spacing: 0.025em;
+}
+#mainImage{
+	padding-top: 30px;
+	text-align: center;
+}
+.thumb{
+	list-style: none;
+	text-align: center;
+}
+
+.thumb li {
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right:10px;
+    margin-top: 10px;
+}
+
+.show-image{
+	text-align: center;
+}
+
+.show-contents{
+	width: 100%;
+}
+
+.post-show{
+	background-color: #fff;
+	padding: 0 3%;
+	border: solid 1px #000;
+}
+
+.postshow-title{
+	padding: 2% 3% 0 3%;
+}
+
+.post-name{
+	padding-bottom: 1%;
+	padding-top: 1%;
+}
+
+.post-name-title{
+	padding-right: 1%;
+}
+
+.post-body{
+	padding-bottom: 3%;
+	font-size: 18px;
+}
+
+.category-show-name{
+	list-style: none;
+	text-align: left;
+}
+
+.category-show-name li{
+	display: inline-block;
+	padding-bottom: 1%;
+}
+
+.post-show-date{
+	margin-right: 5px;
+}
+
+.post-show-category{
+	padding: 0 3%;
+	font-size: 20px;
+}
+
+/*コメント欄用*/
+.comment{
+	padding: 0 3%;
+	background-color: #fff;
+}
+
+.comment-title{
+	margin-top: 3%;
+	background-color: #000;
+	color: #fff;
+	width: 100%;
+}
+
+.comment-title p{
+	margin-bottom: 0;
+	font-size: 20px;
+	padding: 1% 1% 1% 3%;
+	font-weight: bold;
+}
+
+.comment-name{
+	padding-top: 3%;
+	font-weight: bold;
+}
+
+.comment-name p{
+	margin-bottom: 1px
+}
+
+.comment-body{
+	padding-top: 2%;
+	padding-bottom: 2%;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.comment-body p{
+	margin-bottom: 1px;
+}
+
+.comment-submit{
+	text-align: center;
+	padding-bottom: 2%;
+}
+
+.comment-send{
+	width: 50%;
+	height: 40px;
+	font-size: 18px;
+}
+
+.comment-list{
+	padding-top: 15px;
+	padding-left: 3%;
+	background-color: #fff;
 }
