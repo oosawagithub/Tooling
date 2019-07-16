@@ -1,4 +1,4 @@
-<div class="container">
+<div class="content">
 	<div class="top-wrapper" align="center">
 		<!-- Top画像 -->
 		<img class="top-image" src="/assets/top.JPG">
@@ -7,6 +7,9 @@
 		<!-- 投稿一覧 -->
 		<main class="main-contents">
 			<div class="post-box">
+				<div class="list-title">
+						投稿一覧
+				</div>
 				<ul>
 					<% if @posts.present? %>
 						<% @posts.each do |post| %>
@@ -33,6 +36,9 @@
 										<li class="post-category" style="margin-left: 7px;"><%= link_to post.category.name, category_path(post.category_id),data: {"turbolinks" => false} ,class: 'category-link' %></li>
 										<!-- <li class="post-location" style="margin-left: 7px;"><%= post.location %></li> -->
 									</ul>
+									<div class="post-comment-count">
+										コメント(<%= post.comments.count %>)
+									</div>
 								</div>
 							</article>
 						<% end %>
@@ -113,6 +119,26 @@
 				    	<span><%= f.submit"検索",class: "location-submit btn" %></span>
 				    </div>
 				 <% end %>
+			</div>
+		</div>
+		<div class="side-pageview">
+			<div class="side-title pageview">人気記事</div>
+			<div style="text-align: center;">
+				<% @most_viewed.each do |rank| %>
+					<div class="ranking-box clearfix">
+						<div class="rank-image"%>
+							<%= link_to post_path(rank),data: {"turbolinks" => false} do %>
+								<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"no_image.jpg",size:"150x80" %>
+							<% end %>
+						</div>
+						<div class="rank-title" align="left">
+							<%= link_to post_path(rank),data: {"turbolinks" => false} do %>
+        						<%= rank.title %>
+        					<% end %>
+        				</div>
+        				<%#= rank.impressions_count %>
+        			</div>
+    			<% end %>
 			</div>
 		</div>
 		</aside>
