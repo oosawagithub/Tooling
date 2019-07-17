@@ -11,8 +11,8 @@
 					カテゴリ一覧
 				</div>
 				<ul>
-					<% if @category.present? %>
-						<% @category.post.each do |category| %>
+					<% if @categories.present? %>
+						<% @categories.each do |category| %>
 							<article class="main-box clearfix">
 								<div class="post-image">
 									<%= link_to post_path(category),data: {"turbolinks" => false} do %>
@@ -38,7 +38,9 @@
 							</article>
 						<% end %>
 					<% end %>
-					<%#= paginate @category %>
+					<div class="pager">
+						<%= paginate @categories %>
+					</div>
 				</ul>
 			</div>
 		</main>

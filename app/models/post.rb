@@ -23,4 +23,49 @@ class Post < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
 
+    # validates :name, presence: true
+    # validates :name, length: {maximum: 20}
+
+    # validates :title, presence: true
+    # validates :title, length: {maximum: 20}
+
+    # validates :body, presence: true
+    # validates :body,  length: { maximum: 300 }
+
+    # validates :location, presence: true
+
+    # validates :category, presence: true
+
+    validate :add_error
+
+  def add_error
+    if name.blank?
+        errors[:base] << "名前を入力してください"
+    elsif name.length > 20
+        error[:base] << "名前は20文字までで入力してください"
+    end
+
+    if title.blank?
+        errors[:base] << "タイトルを入力してください"
+    elsif title.length > 20
+        error[:base] << "タイトルは20文字までで入力してください"
+    end
+
+    if body.blank?
+        errors[:base] << "本文を入力してください"
+    elsif body.length > 300
+        error[:base] << "本文は300文字までで入力してください"
+    end
+
+    # 都道府県が空のときにエラーメッセージを追加する
+    if location.blank?
+      errors[:base] << "都道府県を選択してください"
+    end
+
+    # カテゴリーが空のときにエラーメッセージを追加する
+    if category.blank?
+      errors[:base] << "カテゴリーを選択してください"
+    end
+  end
+
 end

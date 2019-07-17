@@ -27,9 +27,32 @@
 	background-color: #f5f5f5;
 	width: 100%;
 }
+/*ヘッダー*/
+header{
+    background-color: #000;
+    padding-left: 5%;
+    height: 60px;
+}
 
+.header-menu{
+	line-height: 30px;
+	text-align: right;
+	padding-right: 10%;
+	margin-bottom: 0;
+}
+
+.header-menu li{
+	list-style: none;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.header-menu li >a {
+	color: #fff;
+}
 /*--Topページ画像--*/
 .top-image{
+	padding-top: 1%;
   width: 90%;
   height: 500px;
   object-fit: cover;
@@ -125,6 +148,20 @@ a:hover{
 	font-weight: bold;
 	letter-spacing: 0.025em;
 	margin-bottom: 8px;
+	position: relative;
+}
+
+.list-title span{
+	position: absolute;
+	right: 15px;
+}
+
+.post-new{
+	color: #00ff00;
+}
+
+.post-new:hover{
+	color: #7fffd4;
 }
 
 .post-image{
@@ -342,6 +379,10 @@ a:hover{
 	font-size: 20px;
 }
 
+.post-show-category a{
+	color: #fff;
+}
+
 /*コメント欄用*/
 .comment{
 	padding: 0 3%;
@@ -365,9 +406,15 @@ a:hover{
 .comment-name{
 	padding-top: 3%;
 	font-weight: bold;
+	color: #00008b;
 }
 
-.comment-name p{
+.comment-name-input{
+	padding-top: 3%;
+	font-weight: bold;
+}
+
+.comment-name-input p{
 	margin-bottom: 1px
 }
 
@@ -397,4 +444,48 @@ a:hover{
 	padding-top: 15px;
 	padding-left: 3%;
 	background-color: #fff;
+}
+
+/*新規投稿*/
+.errormesse{
+	padding-top: 30px;
+	padding-left: 50px;
+}
+
+.errormesse p{
+	font-size: 20px;
+	color: red;
+}
+
+.new-post-wrapper{
+	position: relative;
+	padding: 50px;
+}
+
+.postnew h4 {
+	margin: 0;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+#post_category_id{
+	width: 20%;
+    height: 30px;
+    font-size: 16px;
+}
+
+.new-locationselect{
+	width: 20%;
+    height: 30px;
+    font-size: 16px;
+}
+
+.new-postsubmit{
+	padding-top: 30px;
+}
+
+.newsubmit{
+	width: 30%;
+    height: 40px;
+    font-size: 18px
 }

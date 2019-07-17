@@ -1,19 +1,44 @@
 <div class="content">
+	<div class="errormesse">
+	<% if @post.errors.any? %>
+ 			<p><%= @post.errors.count %>件のエラー</p>
+ 		<ul>
+  			<% @post.errors.full_messages.each do |message| %>
+   				<li><%= message %></li>
+  			<% end %>
+		</ul>
+		<% end %>
+	</div>
 	<div class="new-post-wrapper">
 		<main class="postnew">
 			<%= form_for(@post) do |post| %>
-				<%= post.attachment_field :post_images_images, multiple: true %>
+				<h4>画像を選択(4枚まで)</h4>
+				<div class="new-postimage">
+					<%= post.attachment_field :post_images_images, multiple: true %>
+				</div>
 				<h4>名前</h4>
-				<%= post.text_field :name %>
+				<div class="new-postname">
+					<%= post.text_field :name %>
+				</div>
 				<h4>タイトル</h4>
-				<%= post.text_field :title %>
+				<div class="new-posttitle">
+					<%= post.text_field :title %>
+				</div>
 				<h4>本文</h4>
-				<%= post.text_area :body %>
+				<div class="new-postbody">
+					<%= post.text_area :body, size: "110x7" %>
+				</div>
 				<h4>カテゴリー</h4>
-				<%= post.collection_select :category_id, Category.all,:id, :name %>
+				<div class="new-postcategory">
+					<%= post.collection_select :category_id, Category.all,:id, :name,{include_blank: "カテゴリーを選択"}  %>
+				</div>
 				<h4>都道府県</h4>
-				<%= post.select :location, Post.locations.keys, {prompt: '都道府県を選択'}, class: 'form-control' %>
-				<%= post.submit '新規投稿', class: " btn btn-info" %>
+				<div class="new-postlocation">
+					<%= post.select :location, Post.locations.keys, {prompt: '都道府県を選択'}, class: 'new-locationselect' %>
+				</div>
+				<div class="new-postsubmit">
+					<%= post.submit '新規投稿', class: " btn btn-info newsubmit" %>
+				</div>
 			<% end %>
 		</main>
 	</div>

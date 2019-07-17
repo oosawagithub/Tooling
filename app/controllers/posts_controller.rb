@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
   def index
-    #@posts = Post.all.page(params[:page]).per(10)
-    # 検索オブジェクト
     @search = Post.ransack(params[:q])
     if params[:q]
       # 検索結果
@@ -21,7 +19,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     #nilの後に , :unique => [:session_hash] と入力すると同じユーザーが何回見てもカウントされない
     impressionist(@post, nil)
+
     @comment = Comment.new
+
+    @comments = @post.comments.all.page(params[:page]).per(10)
+
     #総コメント数カウント
     # @comments_count = Comment.where(@comment.id).count
     @search = Post.ransack(params[:q])
@@ -42,8 +44,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render "new"
+    end
   end
 
   def edit

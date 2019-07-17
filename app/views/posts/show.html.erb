@@ -58,7 +58,7 @@
 			<div class="comment">
 				<div class="comment-main">
 					<%= form_for [@post,@comment] do |comment| %>
-						<div class="comment-name">
+						<div class="comment-name-input">
 							<p>名前</p>
 							<%= comment.text_field :name %>
 						</div>
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div class="comment-list">
-				<% @post.comments.each.with_index(1) do |list,i| %>
+				<% @comments.each.with_index(1) do |list,i| %>
 					<div class="comment-list-head">
 						<span><%= i %>.</span>
 						<span class="comment-name"><%= list.name %></span>
@@ -83,6 +83,9 @@
 						<%= list.body %>
 					</div>
 				<% end %>
+				<div class="pager">
+					<%= paginate @comments %>
+				</div>
 			</div>
 		</main>
 		<aside class="side-contents">

@@ -8,7 +8,7 @@
 		<main class="main-contents">
 			<div class="post-box">
 				<div class="list-title">
-						投稿一覧
+					投稿一覧<span>新規投稿は<%= link_to "こちら",new_post_path, class: "post-new" %></span>
 				</div>
 				<ul>
 					<% if @posts.present? %>

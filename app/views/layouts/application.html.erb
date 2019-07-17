@@ -10,9 +10,13 @@
   </head>
 
   <body>
-    <!-- link_toにdata: {"turbolinks"=>false}を指定してあげるとturbolinkによるAjaxを無効にでき、jsが読み込まれるようになる。 -->
-    <%= link_to "Topページ", root_path,data: {"turbolinks" => false} %>
-    <%= link_to "新規投稿", new_post_path %>
+    <header>
+      <!-- link_toにdata: {"turbolinks"=>false}を指定してあげるとturbolinkによるAjaxを無効にでき、jsが読み込まれるようになる。 -->
+      <%= link_to "Topページ", root_path,data: {"turbolinks" => false} %>
+      <ul class="header-menu">
+        <li><%= link_to "新規投稿", new_post_path %></li>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>

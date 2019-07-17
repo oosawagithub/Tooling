@@ -12,6 +12,8 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
 
+    @categories = @category.posts.all.page(params[:page]).per(10)
+
     @search = Post.ransack(params[:q])
     if params[:q]
       # 検索結果
