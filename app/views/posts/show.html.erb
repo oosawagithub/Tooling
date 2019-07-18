@@ -42,11 +42,11 @@
 			</div>
 			<div class="post-show">
 				<div class="post-name">
-					<p><span class="post-name-title">投稿者:</span><%= @post.name %></p>
+					<p class="post-show-location"><%= @post.location %></p>
 				</div>
 				<ul class="category-show-name">
+					<li class="post-name-title">投稿者:<%= @post.name %></li>
 					<li class="post-show-date"><%= @post.created_at.strftime('%Y/%m/%d %R') %></li>
-					<li class="post-show-location"><%= @post.location %></li>
 				</ul>
 				<div class="post-body">
 					<%= @post.body %>
@@ -88,13 +88,13 @@
 				</div>
 			</div>
 		</main>
-		<aside class="side-contents">
+	<aside class="side-contents">
 		<!--アクセスカウンター-->
 		<div class="accesscounter">
 			<div class="count-title-box">
 				<div class="side-title">アクセスカウンター</div>
 			</div>
-			<div class="main-counter">
+			<div class="main-counter" align="center">
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td align="center">
@@ -162,23 +162,27 @@
 		</div>
 		<div class="side-pageview">
 			<div class="side-title pageview">人気記事</div>
-			<div style="text-align: center;">
-				<% @most_viewed.each do |rank| %>
-					<div class="ranking-box clearfix">
-						<div class="rank-image"%>
-							<%= link_to post_path(rank),data: {"turbolinks" => false} do %>
-								<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"no_image.jpg",size:"150x80" %>
-							<% end %>
-						</div>
-						<div class="rank-title" align="left">
-							<%= link_to post_path(rank),data: {"turbolinks" => false} do %>
-        						<%= rank.title %>
-        					<% end %>
-        				</div>
-        				<%#= rank.impressions_count %>
-        			</div>
-    			<% end %>
-			</div>
+				<div class="ranking-main">
+					<ul>
+						<% @most_viewed.each do |rank| %>
+							<li>
+								<div class="ranking-box clearfix">
+									<div class="ranking">
+										<%= link_to post_path(rank),data: {"turbolinks" => false} do %>
+										<div class="rank-image">
+											<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"no_image.jpg",size:"100x80" %>
+										</div>
+										<div class="rank-title">
+											<%= rank.title %>
+										</div>
+										<% end %>
+									</div>
+	        				<%#= rank.impressions_count %>
+	        					</div>
+	        				</li>
+	    				<% end %>
+	    			</ul>
+				</div>
 		</div>
 		</aside>
 	</div>

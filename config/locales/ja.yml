@@ -47,7 +47,6 @@ ja:
       more_pages:
         display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> 全部<b>%{total}</b>個の%{entry_name}が表示されています"
 
-ja:
   activerecord:
     models:
       post:
@@ -58,3 +57,11 @@ ja:
         body: "本文"
         location: "都道府県"
         category: "カテゴリー"
+
+    activerecord:
+    models:
+      comment:
+    attributes:
+      comment:
+        name: "名前"
+        body: "本文"

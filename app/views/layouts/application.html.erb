@@ -12,7 +12,9 @@
   <body>
     <header>
       <!-- link_toにdata: {"turbolinks"=>false}を指定してあげるとturbolinkによるAjaxを無効にでき、jsが読み込まれるようになる。 -->
-      <%= link_to "Topページ", root_path,data: {"turbolinks" => false} %>
+      <%= link_to root_path,data: {"turbolinks" => false} do %>
+        <img class="logo-image" src="/assets/logo.jpg">
+      <% end %>
       <ul class="header-menu">
         <li><%= link_to "新規投稿", new_post_path %></li>
       </ul>
