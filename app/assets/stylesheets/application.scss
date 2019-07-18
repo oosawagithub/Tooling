@@ -29,16 +29,25 @@
 }
 /*ヘッダー*/
 header{
+    position: relative;
     background-color: #000;
     padding-left: 5%;
     height: 60px;
 }
 
+/*ロゴ画像*/
+.logo-image{
+	height: 50px;
+    padding-top: 1%;
+}
+
 .header-menu{
-	line-height: 30px;
-	text-align: right;
-	padding-right: 10%;
-	margin-bottom: 0;
+	line-height: 60px;
+    padding-right: 11%;
+    margin-bottom: 0;
+    position: absolute;
+    display: inline-block;
+    right: -5%;
 }
 
 .header-menu li{
@@ -53,9 +62,10 @@ header{
 /*--Topページ画像--*/
 .top-image{
 	padding-top: 1%;
-  width: 90%;
-  height: 500px;
-  object-fit: cover;
+	padding-bottom: 1%;
+  	width: 90%;
+  	height: 500px;
+  	object-fit: cover;
 }
 
 .top-wrapper{
@@ -142,7 +152,6 @@ a:hover{
 .list-title{
 	background-color: #000;
 	color: #fff;
-	margin-top: 8px;
 	font-size: 20px;
 	padding: 12px;
 	font-weight: bold;
@@ -238,11 +247,6 @@ a:hover{
 
 .main-counter{
 	margin-top: 20px;
-	margin-left: 30%;
-}
-
-.count-title-box{
-	margin-top: 8px;
 }
 
 .side-title{
@@ -254,19 +258,21 @@ a:hover{
 	padding: 12px;
 }
 
+/*カテゴリー選択*/
 .category-select{
 	margin-top: 20px;
-	width: 100%;
+	width: 80%;
 	height: 30px;
 }
 
+/*都道府県検索*/
 .location{
 	margin-top: 20px;
 }
 
 .location-select{
 	margin-top: 20px;
-	width: 80%;
+	width: 65%;
 	height: 30px;
 }
 
@@ -275,25 +281,36 @@ a:hover{
 	color: #fff;
 }
 
-.ranking-box{
+/*人気記事のcss*/
+.ranking-main{
+	text-align: left;
+}
+
+.ranking-main ul{
+	list-style: none;
+}
+
+.ranking-main ul li{
 	padding: 8px;
+	margin-bottom: 0;
 	background-color: #fff;
 	margin-top: 8px;
-	position: relative;
 }
 
 .rank-image{
 	float: left;
+	margin: 0 8px 8px 0;
+}
+
+.rank-image img{
+	margin-right: 4px;
 }
 
 .rank-title{
+	font-size: 14px;
 	font-weight: bold;
-	letter-spacing: 0.020em;
-    overflow: hidden;
-    font-size: 14px;
-   /* padding-top: 6%;*/
-    margin-left: 170px;
 }
+
 
 /*投稿詳細ページ*/
 .show-box {
@@ -315,6 +332,11 @@ a:hover{
 	padding-top: 30px;
 	text-align: center;
 }
+
+#mainImage img{
+	max-width: 95%;
+}
+
 .thumb{
 	list-style: none;
 	text-align: center;
@@ -383,6 +405,10 @@ a:hover{
 	color: #fff;
 }
 
+.post-show-location{
+	margin-bottom: 0;
+}
+
 /*コメント欄用*/
 .comment{
 	padding: 0 3%;
@@ -423,6 +449,11 @@ a:hover{
 	padding-bottom: 2%;
 	font-weight: bold;
 	margin-bottom: 8px;
+}
+
+.comment-body textarea{
+	resize: none;
+	max-width: 100%;
 }
 
 .comment-body p{
