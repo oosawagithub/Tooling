@@ -12,12 +12,24 @@
   <body>
     <header>
       <!-- link_toにdata: {"turbolinks"=>false}を指定してあげるとturbolinkによるAjaxを無効にでき、jsが読み込まれるようになる。 -->
-      <%= link_to root_path,data: {"turbolinks" => false} do %>
-        <img class="logo-image" src="/assets/logo.jpg">
+      <% if admin_signed_in? %>
+        <%= link_to admins_posts_path,data: {"turbolinks" => false} do %>
+          <img class="logo-image" src="/assets/logo.jpg">
+          <ul class="header-menu">
+          <li><%= link_to "お問い合わせ一覧", admins_inquiries_index_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        </ul>
+        <% end %>
+
+      <% else %>
+        <%= link_to root_path,data: {"turbolinks" => false} do %>
+          <img class="logo-image" src="/assets/logo.jpg">
+        <% end %>
+        <ul class="header-menu">
+          <li><%= link_to "新規投稿", new_post_path %></li>
+          <li><%= link_to "お問い合わせ", new_inquiry_path %></li>
+        </ul>
       <% end %>
-      <ul class="header-menu">
-        <li><%= link_to "新規投稿", new_post_path %></li>
-      </ul>
     </header>
     <%= yield %>
   </body>
