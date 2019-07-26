@@ -1,7 +1,7 @@
 <div class="content">
 	<div class="top-wrapper" align="center">
 		<!-- Top画像 -->
-		<img class="top-image" src="/assets/top.JPG">
+		<img class="top-image" src="/images/main.jpg">
 	</div>
 	<div class="main wrapper flex">
 		<!-- カテゴリ一覧 -->
@@ -16,7 +16,7 @@
 							<article class="main-box clearfix">
 								<div class="post-image">
 									<%= link_to post_path(category),data: {"turbolinks" => false} do %>
-									<%= attachment_image_tag category.post_images.first, :image, :fill, 200,120,format:"jpeg",fallback:"no_image.jpg",size:"200x120" %>
+									<%= attachment_image_tag category.post_images.first, :image, :fill, 200,120,format:"jpeg",fallback:"/images/no_image.jpg",size:"200x120" %>
 									<% end %>
 								</div>
 								<div class="post-location">
@@ -38,7 +38,7 @@
 							</article>
 						<% end %>
 					<% end %>
-					<div class="pager">
+					<div class="pager" data-turbolinks="false">
 						<%= paginate @categories %>
 					</div>
 				</ul>
@@ -101,6 +101,16 @@
 							location.href = "../categories/4";
 						}else if(value == "5"){
 							location.href = "../categories/5";
+						}else if(value == "6"){
+							location.href = "../categories/6";
+						}else if(value == "7"){
+							location.href = "../categories/7";
+						}else if(value == "8"){
+							location.href = "../categories/8";
+						}else if(value == "9"){
+							location.href = "../categories/9";
+						}else if(value == "10"){
+							location.href = "../categories/10";
 						}
 					};
 				});
@@ -126,7 +136,7 @@
 									<div class="ranking">
 										<%= link_to post_path(rank),data: {"turbolinks" => false} do %>
 										<div class="rank-image">
-											<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"no_image.jpg",size:"100x80" %>
+											<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"/images/no_image.jpg",size:"100x80" %>
 										</div>
 										<div class="rank-title">
 											<%= rank.title %>

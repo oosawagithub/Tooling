@@ -10,15 +10,41 @@
   </head>
 
   <body>
-    <header>
-      <!-- link_toにdata: {"turbolinks"=>false}を指定してあげるとturbolinkによるAjaxを無効にでき、jsが読み込まれるようになる。 -->
-      <%= link_to root_path,data: {"turbolinks" => false} do %>
-        <img class="logo-image" src="/assets/logo.jpg">
-      <% end %>
-      <ul class="header-menu">
-        <li><%= link_to "新規投稿", new_post_path %></li>
-      </ul>
-    </header>
-    <%= yield %>
+    <div class="wrap">
+      <header>
+        <!-- link_toにdata: {"turbolinks"=>false}を指定してあげるとturbolinkによるAjaxを無効にでき、jsが読み込まれるようになる -->
+        <% if admin_signed_in? %>
+          <%= link_to admins_posts_path,data: {"turbolinks" => false} do %>
+            <img class="logo-image" src="/images/logo.jpg">
+            <ul class="header-menu">
+              <li><%= link_to "カテゴリ追加", new_admins_category_path %></li>
+              <li><%= link_to "お問い合わせ一覧", admins_inquiries_index_path %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            </ul>
+          <% end %>
+
+        <% else %>
+          <%= link_to root_path,data: {"turbolinks" => false} do %>
+            <img class="logo-image" src="/images/logo.jpg">
+          <% end %>
+          <ul class="header-menu">
+            <li><%= link_to "新規投稿", new_post_path %></li>
+            <li><%= link_to "お問い合わせ", new_inquiry_path %></li>
+          </ul>
+        <% end %>
+      </header>
+      <%= yield %>
+      <footer class="footer">
+        <div class="footer-menu">
+          <ul class="footer-ul">
+            <li><%= link_to "新規投稿", new_post_path %></li>
+            <li><%= link_to "お問い合わせ", new_inquiry_path %></li>
+          </ul>
+        </div>
+        <div class="footer-text">
+          <p>Ⓒ2019 バイツー all rights reserved.</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

@@ -17,6 +17,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
 *{
 	padding:0;
 	margin: 0;
@@ -27,12 +28,57 @@
 	background-color: #f5f5f5;
 	width: 100%;
 }
+
+.wrap{
+	background-color: #f5f5f5;
+	min-height: 100%;
+	overflow: hidden;
+}
 /*ヘッダー*/
 header{
     position: relative;
     background-color: #000;
     padding-left: 5%;
     height: 60px;
+}
+
+/*フッター*/
+.footer{
+	height: auto;
+	margin-top: 100px;
+	background-color: #000;
+}
+
+.footer-menu{
+	background-color: #696969;
+}
+
+.footer-ul{
+	line-height: 60px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.footer-ul li{
+	display: inline;
+	list-style: none;
+	font-size: 20px;
+	padding-right: 10px;
+}
+
+.footer-ul li a{
+	color: #fff;
+}
+
+.footer-text{
+	text-align: center;
+	line-height: 15;
+}
+
+.footer-text p{
+	letter-spacing: 2px;
+	color: #fff;
+	margin-bottom: 0;
 }
 
 /*ロゴ画像*/
@@ -54,6 +100,8 @@ header{
 	list-style: none;
 	font-size: 20px;
 	font-weight: bold;
+	display: inline;
+	padding-right: 10px;
 }
 
 .header-menu li >a {
@@ -66,6 +114,7 @@ header{
   	width: 90%;
   	height: 500px;
   	object-fit: cover;
+  	object-position:0% 70%;
 }
 
 .top-wrapper{
@@ -112,6 +161,12 @@ header{
     cursor: default;
     color: #fff;
 }
+
+/*カテゴリ追加*/
+.new_category{
+	padding: 50px;
+}
+
 /*--メイン記事--*/
 
 /*リンクの下線を非表示*/
@@ -519,4 +574,94 @@ a:hover{
 	width: 30%;
     height: 40px;
     font-size: 18px
+}
+
+/*管理者お問い合わせ一覧*/
+.inquiryadmin-wrapper{
+	position: relative;
+	padding: 50px;
+}
+
+/*管理者お問い合わせ詳細*/
+.inquiryadmin-show-wrapper{
+	position: relative;
+	padding: 80px;
+}
+
+.inquiry-name{
+	padding-left: 8px;
+}
+
+.inquiry-date-name{
+	padding-left: 25px;
+}
+
+.inquiry-date{
+	padding-left: 8px;
+}
+
+.inquiry-body-name{
+	padding-top: 10px;
+}
+
+.inquiry-body{
+	font-size: 24px;
+}
+
+.back{
+	padding-top: 40px;
+}
+
+/*お問い合わせする画面*/
+.new-inquiry-wrapper {
+    position: relative;
+    padding: 50px;
+}
+
+.inquiry-new h4 {
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.inquiry-submit{
+    padding-top: 30px;
+}
+
+/*送信完了画面*/
+.inquiry-confirm h2{
+	margin-top: 0;
+	padding-bottom: 10px;
+}
+
+.inquiry-show-wrapper{
+	position: relative;
+	padding-top: 50px;
+	padding-left: 150px;
+}
+
+.inquiry-confirm{
+	 padding-top: 30px;
+	 padding-bottom: 20px;
+}
+
+.confirmsubmit{
+	width: 30%;
+    height: 40px;
+    font-size: 18px
+}
+
+/*管理者タイトル検索*/
+.search-title{
+	margin: 10px 0;
+}
+
+#q_title_cont{
+    width: 65%;
+    height: 30px;
+}
+
+/*コメント削除ボタン*/
+.comment-delete{
+	margin-bottom: 10px;
 }
