@@ -63,6 +63,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    redirect_to admins_posts_path
   end
 
   private

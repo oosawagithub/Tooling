@@ -1,0 +1,36 @@
+<div class="content">
+  <div class="new-inquiry-wrapper">
+    <div class="page-header">
+      <h1>お問い合わせ</h1>
+    </div>
+    <% if @inquiry.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <strong>入力内容にエラーがあります</strong>
+          <ul style="list-style: none;">
+            <% @inquiry.errors.each do |attr, msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <main class="inquiry-new">
+      <%= form_for @inquiry do |f| %>
+        <h4>名前<span class="text-danger">（必須）</span></h4>
+        <div class="new-inquiryname">
+         <%= f.text_field :name %>
+        </div>
+        <h4>メールアドレス<span class="text-danger">（必須）</span></h4>
+        <div class="new-inquirytitle">
+          <%= f.text_field :email %>
+        </div>
+        <h4>本文</h4>
+        <div class="new-inquirybody">
+          <%= f.text_area :message, size: "110x7" %>
+        </div>
+        <div class="inquiry-submit">
+          <%= f.submit '確認', class: " btn btn-info newsubmit" %>
+        </div>
+      <% end %>
+    </main>
+  </div>
+</div>

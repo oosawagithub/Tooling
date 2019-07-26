@@ -1,7 +1,7 @@
 <div class="content">
 	<div class="top-wrapper" align="center">
 		<!-- Top画像 -->
-		<img class="top-image" src="/assets/top.JPG">
+		<img class="top-image" src="/images/main.jpg">
 	</div>
 	<div class="main wrapper flex">
 		<!-- 投稿一覧 -->
@@ -17,14 +17,14 @@
 						<%= link_to @post.category.name, category_path(@post.category_id),data: {"turbolinks" => false} ,class: 'category-link' %>
 					</div>
 					<div id="mainImage">
-						<%= attachment_image_tag @post.post_images.first, :image, :fill, 700,400,format:"jpeg",fallback:"no_image.jpg",size:"700x400",class: "images-main" %>
+						<%= attachment_image_tag @post.post_images.first, :image, :fill, 700,400,format:"jpeg",fallback:"/images/no_image.jpg",size:"700x400",class: "images-main" %>
 					</div>
 					<div id="imageList">
 						<ul class="thumb">
 						<% @post.post_images.each.with_index(1) do |image,i| %>
 							<li class="thumb<%= i %>">
 								<!-- :fillの後の数字が画像自体のサイズ指定で、 size:のあとの"200x120"がviewに表示されるサイズっぽい -->
-								<%= attachment_image_tag image, :image, :fill, 700,400,format:"jpeg",fallback:"no_image.jpg",size:"150x100",class: "imageshow" %>
+								<%= attachment_image_tag image, :image, :fill, 700,400,format:"jpeg",fallback:"/images/no_image.jpg",size:"150x100",class: "imageshow" %>
 							</li>
 						<% end %>
 						</ul>
@@ -83,7 +83,7 @@
 						<%= list.body %>
 					</div>
 				<% end %>
-				<div class="pager">
+				<div class="pager" data-turbolinks="false">
 					<%= paginate @comments %>
 				</div>
 			</div>
@@ -145,6 +145,16 @@
 							location.href = "../categories/4";
 						}else if(value == "5"){
 							location.href = "../categories/5";
+						}else if(value == "6"){
+							location.href = "../categories/6";
+						}else if(value == "7"){
+							location.href = "../categories/7";
+						}else if(value == "8"){
+							location.href = "../categories/8";
+						}else if(value == "9"){
+							location.href = "../categories/9";
+						}else if(value == "10"){
+							location.href = "../categories/10";
 						}
 					};
 				});
@@ -170,7 +180,7 @@
 									<div class="ranking">
 										<%= link_to post_path(rank),data: {"turbolinks" => false} do %>
 										<div class="rank-image">
-											<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"no_image.jpg",size:"100x80" %>
+											<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"/images/no_image.jpg",size:"100x80" %>
 										</div>
 										<div class="rank-title">
 											<%= rank.title %>

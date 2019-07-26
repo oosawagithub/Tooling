@@ -1,0 +1,29 @@
+<div class="content">
+  <div class="inquiryadmin-wrapper">
+    <div class="page-header">
+      <h1>お問い合わせ一覧</h1>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>お問い合わせ日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @inquiry.each  do |inquiry| %>
+          <tr>
+            <td><%= inquiry.name %></td>
+            <td><%= inquiry.email %></td>
+            <td><%= inquiry.created_at.strftime('%Y/%m/%d %R')  %></td>
+            <td><%= link_to "内容詳細", admin_show_path(inquiry), class: "btn btn-info" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pager">
+          <%= paginate @inquiry %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class ="content">
+  <div class="inquiryadmin-show-wrapper">
+    <div class="page-header">
+      <h1>お問い合わせ内容</h1>
+    </div>
+    <h4>
+      <p>
+        名前:<span class="inquiry-name"><%= @inquiries.name %></span>
+        <span class="inquiry-date-name">お問い合わせ日時:
+          <sapn class="inquiry-date">
+            <%= @inquiries.created_at.strftime('%Y/%m/%d %R') %>
+          </span>
+        </span>
+      </p>
+    </h4>
+    <h4 class="inquiry-body-name">お問い合わせ内容</h4>
+    <div class="inquiry-body">
+      <%= @inquiries.message %>
+    </div>
+    <p class="back"><%= link_to '一覧へ戻る', :back ,class: "btn btn-info" %></p>
+  </div>
+</div>

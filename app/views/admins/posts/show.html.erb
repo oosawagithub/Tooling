@@ -1,7 +1,7 @@
 <div class="content">
 	<div class="top-wrapper" align="center">
 		<!-- Top画像 -->
-		<img class="top-image" src="/assets/top.JPG">
+		<img class="top-image" src="/images/top.JPG">
 	</div>
 	<div class="main wrapper flex">
 		<!-- 投稿一覧 -->
@@ -11,13 +11,16 @@
 						投稿内容
 				</div>
 				<article class="show-box clearfix">
-					<h1 class="postshow-title"><%= @post.title %></h1>
+					<h1 class="postshow-title">
+						<%= @post.title %>
+						<%= link_to "投稿削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn btn-danger" %>
+					</h1>
 					<div class="post-show-category">
 						<span style="margin-right: 3px;">カテゴリー</span>
 						<%= link_to @post.category.name, admins_category_path(@post.category_id),data: {"turbolinks" => false} ,class: 'category-link' %>
 					</div>
 					<div id="mainImage">
-						<%= attachment_image_tag @post.post_images.first, :image, :fill, 700,400,format:"jpeg",fallback:"no_image.jpg",size:"700x400",class: "images-main" %>
+						<%= attachment_image_tag @post.post_images.first, :image, :fill, 700,400,format:"jpeg",fallback:"/images/no_image.jpg",size:"700x400",class: "images-main" %>
 					</div>
 					<div id="imageList">
 						<ul class="thumb">
@@ -82,8 +85,11 @@
 					<div class="comment-body">
 						<%= list.body %>
 					</div>
+					<div class="comment-delete">
+					<%= link_to "コメント削除", admins_comment_path(list), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn btn-danger" %>
+					</div>
 				<% end %>
-				<div class="pager">
+				<div class="pager" data-turbolinks="false">
 					<%= paginate @comments %>
 				</div>
 			</div>
@@ -119,49 +125,63 @@
 						const select = category.selectedIndex;
 						const value = category.options[select].value;
 						if(value == "1"){
-							location.href = "../admins/categories/1";
+							location.href = "../categories/1";
 						}else if(value == "2"){
-							location.href = "../admins/categories/2";
+							location.href = "../categories/2";
 						}else if(value == "3"){
-							location.href = "../admins/categories/3";
+							location.href = "../categories/3";
 						}else if(value == "4"){
-							location.href = "../admins/categories/4";
+							location.href = "../categories/4";
 						}else if(value == "5"){
-							location.href = "../admins/categories/5";
+							location.href = "../categories/5";
+						}else if(value == "6"){
+							location.href = "../categories/6";
+						}else if(value == "7"){
+							location.href = "../categories/7";
+						}else if(value == "8"){
+							location.href = "../categories/8";
+						}else if(value == "9"){
+							location.href = "../categories/9";
+						}else if(value == "10"){
+							location.href = "../categories/10";
 						}
 					};
 				});
 			</script>
 		<div class="side-search">
-			<div class="side-title location">都道府県検索</div>
+			<div class="side-title location">タイトル検索</div>
 			<div style="text-align: center;">
-				<%= search_form_for @search do |f| %>
-				    <div class="form-group">
-				    	<%= f.select :location_eq,[["北海道",1],["青森県",2],["岩手県",3],["宮城県",4],["秋田県",5],["山形県",6],["福島県",7],["茨城県",8],["栃木県",9],["群馬県",10],["埼玉県",11],["千葉県",12],["東京都",13],["神奈川県",14],["新潟県",15],["富山県",16],["石川県",17],["福井県",18],["山梨県",19],["長野県",20],["岐阜県",21],["静岡県",22],["愛知県",23],["三重県",24],["滋賀県",25],["京都府",26],["大阪府",27],["兵庫県",28],["奈良県",29],["和歌山県",30],["鳥取県",31],["島根県",32],["岡山県",33],["広島県",34],["山口県",35],["徳島県",36],["香川県",37],["愛媛県",38],["高知県",39],["福岡県",40],["佐賀県",41],["長崎県",42],["熊本県",43],["大分県",44],["宮崎県",45],["鹿児島県",46],["沖縄県",47]],{include_blank: "都道府県を選択"},{class: "location-select"} %>
-				    	<span><%= f.submit"検索",class: "location-submit btn" %></span>
+				<%= search_form_for @search, url: admins_posts_path do |search| %>
+				    <div class="search-title">
+	    				<%= search.text_field :title_cont %>
+				    	<span><%= search.submit"検索",class: "location-submit btn" %></span>
 				    </div>
 				 <% end %>
 			</div>
 		</div>
 		<div class="side-pageview">
 			<div class="side-title pageview">人気記事</div>
-			<div style="text-align: center;">
-				<% @most_viewed.each do |rank| %>
-					<div class="ranking-box clearfix">
-						<div class="rank-image"%>
-							<%= link_to admins_post_path(rank),data: {"turbolinks" => false} do %>
-								<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"no_image.jpg",size:"150x80" %>
-							<% end %>
-						</div>
-						<div class="rank-title" align="left">
-							<%= link_to admins_post_path(rank),data: {"turbolinks" => false} do %>
-        						<%= rank.title %>
-        					<% end %>
-        				</div>
-        				<%#= rank.impressions_count %>
-        			</div>
-    			<% end %>
-			</div>
+				<div class="ranking-main">
+					<ul>
+						<% @most_viewed.each do |rank| %>
+							<li>
+								<div class="ranking-box clearfix">
+									<div class="ranking">
+										<%= link_to admins_post_path(rank),data: {"turbolinks" => false} do %>
+										<div class="rank-image">
+											<%= attachment_image_tag rank.post_images.first, :image, :fill, 150,80,format:"jpeg",fallback:"/images/no_image.jpg",size:"100x80" %>
+										</div>
+										<div class="rank-title">
+											<%= rank.title %>
+										</div>
+										<% end %>
+									</div>
+	        				<%#= rank.impressions_count %>
+	        					</div>
+	        				</li>
+	    				<% end %>
+	    			</ul>
+				</div>
 		</div>
 		</aside>
 	</div>
