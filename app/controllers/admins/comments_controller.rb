@@ -18,5 +18,4 @@ class Admins::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:post_id, :name, :body)
   end
-
 end

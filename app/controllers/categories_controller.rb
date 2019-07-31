@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   def create
   	@category = Category.new(category_params)
   	@category.save
-    redirect_to new_category_path
+    redirect_to new_admins_category_path
   end
 
   def show

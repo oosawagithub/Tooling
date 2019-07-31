@@ -22,16 +22,6 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.find(params[:id])
   end
 
-  def thanks
-    # メール送信
-    @inquiry = Inquiry.new(inquiry_params)
-    @inquiry.save
-    InquiryMailer.received_email(@inquiry).deliver
-    # 完了画面を表示
-    render :action => 'thanks'
-  end
-
-
   def admin_index
     #mail_flag:1の情報を持ってくる
   	@inquiry = Inquiry.all.order(created_at: :desc).page(params[:page]).per(10)
@@ -43,9 +33,7 @@ class InquiriesController < ApplicationController
   end
 
   private
-
   def inquiry_params
   	params.require(:inquiry).permit(:name, :email, :message)
   end
-
 end

@@ -40,5 +40,4 @@ class Admins::PostsController < ApplicationController
                   .where("? <= created_at", Time.now.prev_week)
                   .where("created_at <= ?", Time.now).take(10)
   end
-
 end
